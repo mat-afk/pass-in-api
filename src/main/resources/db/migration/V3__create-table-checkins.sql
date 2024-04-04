@@ -1,5 +1,3 @@
--- noinspection SqlNoDataSourceInspectionForFile
-
 CREATE TABLE check_ins (
     id INTEGER NOT NULL PRIMARY KEY IDENTITY,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

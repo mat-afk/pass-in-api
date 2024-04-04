@@ -1,5 +1,3 @@
--- noinspection SqlNoDataSourceInspectionForFile
-
 CREATE TABLE attendees (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
