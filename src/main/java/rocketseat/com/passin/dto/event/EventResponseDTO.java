@@ -6,10 +6,10 @@ import rocketseat.com.passin.domain.event.Event;
 @Getter
 public class EventResponseDTO {
 
-    EventDetailsDTO eventDetailsDTO;
+    EventDetailsDTO event;
 
     public EventResponseDTO(Event event, Integer numberOfAttendees) {
-        this.eventDetailsDTO = new EventDetailsDTO(
+        this.event = new EventDetailsDTO(
                 event.getId(),
                 event.getTitle(),
                 event.getDetails(),
