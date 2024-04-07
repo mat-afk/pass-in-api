@@ -23,7 +23,7 @@ import java.util.Optional;
 public class AttendeeService {
 
     private final AttendeeRepository attendeeRepository;
-    private final CheckInRepository checkInRepository;
+    private final CheckInService checkInService;
 
     public List<Attendee> getAllAttendeesFromEvent(String eventId) {
         return this.attendeeRepository.findAllByEventId(eventId);
@@ -34,7 +34,7 @@ public class AttendeeService {
 
         List<AttendeeDetailsDTO> attendeeDetailsDTOList = attendeeList.stream().map(attendee -> {
             // find out if attendee has checkedIn
-            Optional<CheckIn> checkIn = this.checkInRepository.findByAttendeeId(attendee.getId());
+            Optional<CheckIn> checkIn = this.checkInService.getCheckIn(attendee.getId());
             LocalDateTime checkedInAt = checkIn.map(CheckIn::getCreatedAt).orElse(null);
 
             return new AttendeeDetailsDTO(
@@ -60,12 +60,16 @@ public class AttendeeService {
             throw new AttendeeAlreadyRegisteredException("Attendee is already registered");
     }
 
+    public void checkIn(String attendeeId) {
+        Attendee attendee = this.getAttendee(attendeeId);
+        this.checkInService.registerCheckIn(attendee);
+    }
+
     public AttendeeBadgeResponseDTO getAttendeeBadge(
             String attendeeId,
             UriComponentsBuilder uriComponentsBuilder
     ) {
-        Attendee attendee = this.attendeeRepository.findById(attendeeId).orElseThrow(() ->
-                new AttendeeNotFoundException("Attendee not found with id: " + attendeeId));
+        Attendee attendee = this.getAttendee(attendeeId);
 
         var uri = uriComponentsBuilder.path("/attendees/{id}/check-in").buildAndExpand(attendeeId).toUri().toString();
 
@@ -77,5 +81,10 @@ public class AttendeeService {
         );
 
         return new AttendeeBadgeResponseDTO(attendeeBadgeDTO);
+    }
+
+    private Attendee getAttendee(String attendeeId) {
+        return this.attendeeRepository.findById(attendeeId).orElseThrow(() ->
+                new AttendeeNotFoundException("Attendee not found with id: " + attendeeId));
     }
 }
