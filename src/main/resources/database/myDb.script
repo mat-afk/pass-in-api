@@ -29,7 +29,7 @@ SET FILES NIO TRUE
 SET FILES NIO SIZE 256
 SET FILES LOG TRUE
 SET FILES LOG SIZE 50
-SET FILES CHECK 9557
+SET FILES CHECK 10917
 SET DATABASE COLLATION "SQL_TEXT" PAD SPACE
 CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
 ALTER USER SA SET LOCAL TRUE
@@ -59,7 +59,11 @@ INSERT INTO "flyway_schema_history" VALUES(2,'2','create-table-attendees','SQL',
 INSERT INTO "flyway_schema_history" VALUES(3,'3','create-table-checkins','SQL','V3__create-table-checkins.sql',1441113343,'SA','2024-04-03 21:42:03.765078',9,'1')
 INSERT INTO "flyway_schema_history" VALUES(4,'4','create-indexes','SQL','V4__create-indexes.sql',553901455,'SA','2024-04-03 21:44:59.286418',21,'1')
 INSERT INTO EVENTS VALUES('40367ba3-26ec-47c7-b9bb-9283ce848a82','Rocketseat NLW','Aprenda Node.Js de forma gratuita','rocketseat-nlw',170)
+INSERT INTO EVENTS VALUES('4fa4e80a-feeb-4128-98e6-82283fc42044','Rocketseat NLW Expert','Aprenda v\u00e1rias tecnologias de forma gratuita','rocketseat-nlw-expert',1)
 INSERT INTO EVENTS VALUES('f5bb30cf-c021-4ae2-a63b-6bb0f8e34eae','Rocketseat NLW Unite','Aprenda Java de forma gratuita','rocketseat-nlw-unite',500)
+INSERT INTO ATTENDEES VALUES('584ccded-85e2-4bc1-8883-f2d3515ca810','Bernardo','berna@gmail.com','f5bb30cf-c021-4ae2-a63b-6bb0f8e34eae','2024-04-06 21:16:16.826886')
+INSERT INTO ATTENDEES VALUES('686c1c6f-c61d-4384-a066-3806ed7ffb57','Domingos Lucas','latorreoli@gmail.com','f5bb30cf-c021-4ae2-a63b-6bb0f8e34eae','2024-04-06 21:13:32.897974')
+INSERT INTO ATTENDEES VALUES('a7405b65-5d2a-4c5b-a583-82ef2d18f0a7','Fernanda Kipper','eu@gmail.com','4fa4e80a-feeb-4128-98e6-82283fc42044','2024-04-06 21:23:27.645673')
 INSERT INTO ATTENDEES VALUES('b65b9bd0-575e-415e-9596-f802e8cfa77d','Gustavo Lemos dos Reis Silva','hibolw@gmail.com','f5bb30cf-c021-4ae2-a63b-6bb0f8e34eae',NULL)
 INSERT INTO ATTENDEES VALUES('ccddc63e-4624-483c-a3da-3a522319cee7','Mateus Cruzatto Ramos','mateus@gmail.com','f5bb30cf-c021-4ae2-a63b-6bb0f8e34eae',NULL)
 INSERT INTO ATTENDEES VALUES('e877ac7d-5ff8-4e9c-bb3b-db56fb267940','Luiz Quirino','luiz.post@gmail.com','f5bb30cf-c021-4ae2-a63b-6bb0f8e34eae','2024-04-06 20:00:21.339990')
